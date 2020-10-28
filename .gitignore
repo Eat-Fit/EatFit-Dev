@@ -1,5 +1,6 @@
 .env
 venv/
+
 *.log
 *.pot
 *.pyc
@@ -13,3 +14,4 @@ eventup/media/
 .pytest_cache/
 .envs/
 .vscode/
+
