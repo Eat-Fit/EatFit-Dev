@@ -18,3 +18,4 @@ urlpatterns = [
     # Users views
     path('', users_views.landing_view, name='landing'),
 ]
+# Comentario de prueba
