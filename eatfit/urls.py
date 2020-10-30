@@ -16,6 +16,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Users views
-    path('', users_views.landing_view, name='landing'),
+    path('', users_views.landing_view , name='landing'),
+    path('login/', users_views.login_view , name='login'),
+    path('register/', users_views.register_view , name='register'),
+
 ]
-# Comentario de prueba
