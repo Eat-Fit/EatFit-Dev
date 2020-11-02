@@ -128,5 +128,12 @@ STATIC_URL = '/static/'
 # Static DIR es donde se encuentra el archivo
 STATICFILES_DIRS = (
     BASE_DIR / 'static',
-    
 )
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
