@@ -1,6 +1,6 @@
 # EatFit-Dev
 ## DJANGO PROJECT TEMPLATE
-# Dillinger 
+ 
 This is a simple Django 2.0+ project template with my preferred setup. Most Django project templates make way too many assumptions or are just way too complicated. I try to make the least amount of assumptions possible while still trying provide a useful setup. Most of my projects are deployed to Heroku, so this is optimized for that but is not necessary.
 
 ## FEATURES
@@ -35,14 +35,14 @@ django-admin.py startproject \
 * You're ready to run the project with docker-compose and add that "container expert" bullet point to your CV:
 
 $ docker-compose up
-You should be able to access your project under http://localhost/. I like it running on port 80, and you can assign a different hostname in your /etc/hosts if you want it to look a bit better.
+You should be able to access your project under *http://localhost/*. I like it running on port 80, and you can assign a different hostname in your /etc/hosts if you want it to look a bit better.
 
 If you don't want to bother with docker-compose yet, you can run it locally:
 
 * poetry install
 * ./manage.py migrate
 * ./manage.py runserver_plus
-* Then you can access your project at http://localhost:8080/, like a plebe.
+* Then you can access your project at *http://localhost:8080/*, like a plebe.
 
 ## Dokku deployment
 
