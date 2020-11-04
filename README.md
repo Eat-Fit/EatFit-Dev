@@ -1,9 +1,9 @@
 # EatFit-Dev
-# h1 DJANGO PROJECT TEMPLATE
+## DJANGO PROJECT TEMPLATE
 
 This is a simple Django 2.0+ project template with my preferred setup. Most Django project templates make way too many assumptions or are just way too complicated. I try to make the least amount of assumptions possible while still trying provide a useful setup. Most of my projects are deployed to Heroku, so this is optimized for that but is not necessary.
 
-# h1 FEATURES
+## FEATURES
 
 Latest Django (hopefully).
 Uses Poetry - the best packaging tool.
@@ -16,7 +16,7 @@ Can also run outside of docker-compose using SQLite, for when you aren't using P
 Other things I'm forgetting now.
 
 
-# h1 INSTALLATION
+## INSTALLATION
 
 ./Installing the template is easy, you don't really have to do much:
 django-admin.py startproject \
@@ -24,7 +24,7 @@ django-admin.py startproject \
   --extension py,cfg,yml,ini,toml \
   <project_name>
 
-# h2 After installation, you need to change the following:
+## After installation, you need to change the following:
 
 * Run poetry lock to pin the packages to the latest versions.
 * Change this README.
@@ -44,15 +44,15 @@ If you don't want to bother with docker-compose yet, you can run it locally:
 * ./manage.py runserver_plus
 * Then you can access your project at http://localhost:8080/, like a plebe.
 
-# h2 Dokku deployment
+## Dokku deployment
 
 The template comes with most of the things you need to deploy it on Dokku. You will need to set up a Postgres database, a Redis instance and a TLS certificate first, though. For instructions, see my post on deploying Django projects on Dokku.
 
-# h2 PRODUCTION DEPLOYMENT TIPS
+## PRODUCTION DEPLOYMENT TIPS
 
 You're going to need to add some secrets for production. That's fine, as long as you don't commit them in any repo. The project is structured such that all secrets can be passed as environment variables (see the settings file for the variable names).
 
 You can also specify any secret keys or settings in a local_settings.py, which will override your settings.py variables. I usually use that for local development.
 
-# h2 LICENSE
+## LICENSE
 Copyright © Stavros Korokithakis. Licensed under the MIT license.
