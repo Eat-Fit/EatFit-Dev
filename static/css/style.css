@@ -6,8 +6,12 @@
   }
 
 .alto {
-    height: device-height;
+    height: 100vh;
 }
+
+/* .altoContacto {
+    margin-top: 250px;
+} */
 
 h4{  
 font-family: 'Spectral SC';
@@ -17,7 +21,6 @@ color: #000000;
 display: flex;
 align-items: center;
 justify-content: center;
-min-height: 100vh;
 }
 
 body{ 
