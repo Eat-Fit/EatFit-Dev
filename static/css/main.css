@@ -1,8 +1,9 @@
-html, body {
-    background: #fff;
+body{
+    background: white;
     height: 100%;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+font-family: 'Spectral SC';
+    
 }
 
 #auth-container {
