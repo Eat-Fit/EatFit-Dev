@@ -1,0 +1,39 @@
+/* Fondo del recuadro de la lista de nutriologos */
+.fondoNutri {
+    background: #F7F7F7;
+    mix-blend-mode: normal;
+}
+
+/* Fondo de recuadro del nutriologo */
+.cuadroNutri {
+    background: #E6E6E6;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+/* Fondo de recuadro de informacion del nutriologo */
+.infoNutri {
+    background: rgba(196, 196, 196, 0.5);
+    border-radius: 4px;
+}
+
+/* Margen para la info de los nutriologos para que no haga todo el salto de linea */
+.mr0 {
+    margin: 0px;
+}
+
+.detalleNutri {
+    background: #EEEEEE;
+    border-radius: 4px;
+}
+
+.profilePic{
+    min-width: 90px;
+}
+
+.linea {
+    border-top: 1px solid rgba(34, 40, 49, 0.2);
+    height: 2px;
+    padding: 0;
+    margin: 20px auto 0 auto;
+  }
