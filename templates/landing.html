@@ -7,13 +7,47 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
 
 </head>
 <body>
-    <h4>Bienvenidos! :)</h4>
-    <br>
-    <a type="button" class="btn btn-light" href=" {% url 'login' %} ">Iniciar sesion</a>
-    <a type="button" class="btn btn-dark"  href=" {% url 'register' %} ">Registrarse</a>
+    
+<div class="col-6 align-items-center alto center">
+
+    <div class="">
+        <h4 class="text-center py-3 mx-5 px-5"> Tu mala alimentación de hoy, serán tus problemas de salud mañana</h4>
+        <div class="row justify-content-center">
+            <a type="button"class="btn btn-light" href=" {% url 'login' %} ">Iniciar sesion</a>
+            <p class="mx-3"></p>
+            <a type="button" class="btn btn-dark"  href=" {% url 'register' %} ">Registrarse</a>
+        </div>
+            
+       
+        <div class="col align-self-center  altoContacto mt-5">
+            <p class="font-weight-bold text-center">Contacto@eatfit.com</p>
+            <div class="row justify-content-center">
+                <a href="https://twitter.com/">
+                    <img src=" {% static 'img/icono_twitter.png' %} " width="37" height="37" />
+                </a>
+                <a href="https://www.whatsapp.com/">
+                    <img src=" {% static 'img/icono_whatsapp.png' %} " width="37" height="37" />
+                </a>
+                <a href="https://www.facebook.com/">
+                    <img src=" {% static 'img/icono_facebook.png' %} " width="37" height="37" />
+                </a>
+            </div>
+        </div>
+    
+        
+    </div>
+    
+</div>
+
+
 </body>
 </html>
+
+
+{% comment %} 
+<a type="button" class="btn btn-light" href=" {% url 'login' %} ">Iniciar sesion</a>
+    <a type="button" class="btn btn-dark"  href=" {% url 'register' %} ">Registrarse</a> {% endcomment %}
