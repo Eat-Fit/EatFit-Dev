@@ -11,24 +11,30 @@
     
 </head>
 <body>
-    <div class="fondo ">
+    <div class="fondo">
       <div class="row justify-content-center">
         <div class="col-sm-7">
-          <form>
+
+          <form method="POST" action=" {% url 'login' %} ">
+          {% csrf_token %}
             <div class="form-group center">
               <div class="container my-5 py-3 fondoLog">
-                <label for="exampleInputEmail1">Usuario</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div class="form-group">
+                <label for="InputUser">Usuario</label>
+                <input type="text" class="form-control" id="InputUser" name="username">
+                
                 <label for="exampleInputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                
                 <div  class="col text-center">
-                  <button type="submit" class="btn btn-dark">Iniciar Sesión</button>
+                  <button type="submit" class="btn btn-dark mt-3">Iniciar Sesión</button>
                 </div>
+                {% if error %}
+                  <p class="alert alert-danger mt-2" role="alert">{{error}}</p>
+                {% endif %}
               </div>
             </div>
           </form>
+
         </div>
       </div>
     </div>

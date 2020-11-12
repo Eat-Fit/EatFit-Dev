@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 # Models
-from Users.models import Profile, Nutriologist
+from Users.models import Profile
 
 # Exception
 from django.db.utils import IntegrityError
@@ -29,18 +29,49 @@ def login_view(request):
         user = authenticate (request, username=username, password=password)
         if user:
             login(request,user)
-            return redirect('prueba')
+            return redirect('home')
         else:
-            return render(request, 'users/login.html', {'error':'Error, usuario o contraseña invalido'} )
+            return render(request, 'users/login.html', {'error':'Error, usuario o contraseña invalido!'} )
 
     return render(request,'users/login.html')
 
 
 def register_view(request):
     """Register view"""
+    if request.method =='POST':
+
+        username      = request.POST['username']
+        password      = request.POST['passwd']
+        password_conf = request.POST['passwd_confirmation']
+        
+        if password != password_conf:
+            return render(request, 'users/register.html', {'error':'Error, las contraseñas que ingresaste no coinciden!'})
+        
+        try:
+            user= User.objects.create_user(username=username, password=password)
+        except IntegrityError:
+            return render(request, 'users/register.html', {'error':'Ya existe alguien con ese nombre de usuario :('})
+
+        user.first_name = request.POST['first_name']
+        user.last_name  = request.POST['last_name']
+        user.email      = request.POST['email']
+        user.save()
+
+        profile = Profile(user=user)
+        profile.save()
+
+        return redirect('login')
+
     return render(request, 'users/register.html')
 
-    
+
+@login_required
+def logout_view(request):
+    """Logout a user"""
+    logout(request)
+    return redirect('login')
+
+
 def prueba(request):
     """Test view"""
     return HttpResponse('<h1>Logeado correctamente</h1>')
