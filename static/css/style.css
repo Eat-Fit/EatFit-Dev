@@ -1,49 +1,41 @@
+.body{
+    margin: 0;
+    padding: 0;
+}
+
+.fondo{
+    background-image: url(../img/Circulos\ login.png);
+    background-size: cover;
+    position: absolute;
+    width: 588px;
+    height: 1024px;
+    left: 0px;
+    top: 0px;
+}
+
+.fondo2{
+    background-image: url(../img/Fondo\ login.png);
+    background-size: cover;
+    position: absolute;
+    width: 854px;
+    height: 1025px;
+    left: 588px;
+    top: -1px;
+}
+
+.fondoLog{
+    background: #F7F7F7;
+    box-shadow: -4px 8px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+.btn{
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
+
 .center {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-  }
-
-.alto {
-    height: 100vh;
 }
-
-/* .altoContacto {
-    margin-top: 250px;
-} */
-
-h4{  
-font-family: 'Spectral SC';
-font-size: 50px !important;
-line-height: 55px !important;
-color: #000000;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-body{ 
-
-    background-image: url("/static/img/fondo_landing.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-
-}
-
-.btn-light{ 
-    
-     border-color: black !important; 
-     color: black;  
-      
- } 
-    
-.btn-dark{   
-    border-color: black !important;  
-    color: white;    
-}  
-
-
-
-
-
