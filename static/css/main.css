@@ -1,8 +1,9 @@
-html, body {
-    background: #fff;
+body{
+    background: white;
     height: 100%;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+font-family: 'Spectral SC';
+    
 }
 
 #auth-container {
@@ -12,7 +13,7 @@ html, body {
 }
 
 #main-navbar {
-    background: #fff;
+    background: #07689F;
     border-bottom: 1px solid rgba(0,0,0,.0975);
 }
 

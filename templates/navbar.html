@@ -1,0 +1,31 @@
+{% load static %}
+
+<nav class="navbar navbar-dark navbar-expand-sm" style="background: #07689F">
+  <a class="navbar-brand" href=" {% url 'home' %} ">
+    <img src=" {% static 'img/ef_logo.png' %} " width="37" height="37" class="d-inline-block align-center ml-1" alt="" loading="lazy">
+     Inicio
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link ml-1" href="#">Perfil</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link ml-1" href="#">Perfil 2</a>
+      </li>
+    </ul>  
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item nav-icon mr-2">
+        <a href=" {% url 'logout' %} ">
+            <img src=" {% static 'icons/logout.png' %} "  height="22" />
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav> 

@@ -1,0 +1,15 @@
+.fondo{
+    background-image: url(../img/Fondo\ register.png);
+    min-height:100%;
+    background-size:cover;
+}
+
+.fondoReg {
+    background: #F7F7F7;
+    box-shadow: -4px 8px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+.btn {
+filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}

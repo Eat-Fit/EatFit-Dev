@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'Users',
+    'services',
 ]
 
 MIDDLEWARE = [
@@ -128,5 +129,16 @@ STATIC_URL = '/static/'
 # Static DIR es donde se encuentra el archivo
 STATICFILES_DIRS = (
     BASE_DIR / 'static',
-    
 )
+
+# Login url para el login_required
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'login/'
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
