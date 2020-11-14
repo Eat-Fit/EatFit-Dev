@@ -7,8 +7,8 @@
     background-image: url(../img/Circulos\ login.png);
     background-size: cover;
     position: absolute;
-    width: 588px;
-    height: 1024px;
+    min-width: 50%;
+    min-height:100%;
     left: 0px;
     top: 0px;
 }
@@ -17,15 +17,21 @@
     background-image: url(../img/Fondo\ login.png);
     background-size: cover;
     position: absolute;
-    width: 854px;
-    height: 1025px;
-    left: 588px;
-    top: -1px;
+    min-width: 50%;
+    min-height:100%;
+    left: 50%;
+    top: 0px;
+}
+
+.fondoUser{
+    background-image: url(../img/Fondo\ register.png);
+    min-height:100%;
+    background-size:cover;
 }
 
 .fondoLog{
     background: #F7F7F7 !important;
-    box-shadow: -4px 8px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: -4px 8px 25px rgba(0, 0, 0, 0.60);
     border-radius: 15px !important;
 }
 

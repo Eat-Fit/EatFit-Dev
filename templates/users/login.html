@@ -13,27 +13,34 @@
 <body>
     <div class="fondo">
       <div class="row justify-content-center">
-        <div class="col-sm-7">
+        <div class="col-sm-6">
 
           <form method="POST" action=" {% url 'login' %} ">
-          {% csrf_token %}
+           {% csrf_token %}
             <div class="form-group center">
-              <div class="container my-5 py-3 fondoLog">
-                <label for="InputUser">Usuario</label>
-                <input type="text" class="form-control" id="InputUser" name="username">
-                
-                <label for="exampleInputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                
-                <div  class="col text-center">
-                  <button type="submit" class="btn btn-dark mt-3">Iniciar Sesión</button>
-                </div>
-                {% if error %}
-                  <p class="alert alert-danger mt-2" role="alert">{{error}}</p>
-                {% endif %}
-              </div>
+                <div class="container my-5 py-3 fondoLog">
+
+                  {% if error %}
+                    <p class="alert alert-danger mt-0 mb-2" role="alert">{{error}}</p>
+                  {% endif %}
+
+                  <label for="InputUser" class="mt-2 mb-0">Usuario</label>
+                  <input type="text" class="form-control" id="InputUser" name="username">
+                  
+                  <label for="exampleInputPassword1" class="mt-2 mb-0">Contraseña</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                  
+                  <div  class="col text-center">
+                    <button type="submit" class="btn btn-dark mt-4 mb-1">Iniciar Sesión</button>
+                  </div>
+                  <div class="d-flex flex-column mt-2">
+                    <p class="m-auto font-weight-light">Olvidaste tu password?
+                    <a href="{% url 'password_reset' %}">click aqui</a> </p>
+                    
+                 </div>
+               </div>
             </div>
-          </form>
+           </form>
 
         </div>
       </div>
