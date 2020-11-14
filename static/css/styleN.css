@@ -9,10 +9,6 @@
     height: 100vh;
 }
 
-/* .altoContacto {
-    margin-top: 250px;
-} */
-
 h4{  
 font-family: 'Spectral SC';
 font-size: 50px !important;
@@ -23,12 +19,12 @@ align-items: center;
 justify-content: center;
 }
 
-body{ 
-
+.fondo{ 
     background-image: url("/static/img/fondo_landing.png");
-    background-size: cover;
+    height: 100%;
+    width: 100%;
+    background-size:cover !important;
     background-repeat: no-repeat;
-
 }
 
 .btn-light{ 
