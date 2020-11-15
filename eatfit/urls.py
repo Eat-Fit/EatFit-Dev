@@ -18,11 +18,15 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # Users views
-    path('', users_views.landing_view , name='landing'),
-    path('login/', users_views.login_view , name='login'),
-    path('logout/', users_views.logout_view, name='logout'),
-    path('register/', users_views.register_view , name='register'),
+    # USER VIEWS---------------------------------------------------
+    path('',           users_views.landing_view , name='landing'),
+    path('login/',     users_views.login_view , name='login'),
+    path('logout/',    users_views.logout_view, name='logout'),
+    path('register/',  users_views.register_view , name='register'),
+    path('mi-perfil/', users_views.profile_user_view, name='profile'),
+    # END USER VIEWS-----------------------------------------------
+
+
 
     # Services views
     path('home/', services_views.home_view, name='home'),
@@ -30,7 +34,8 @@ urlpatterns = [
     path('prueba/', users_views.prueba, name='prueba'),
     
 
-    # Restore password views
+
+    # RESTORE PASSWORD VIEWS--------------------------------------------------------
     path('password_change/',
     auth_views.PasswordChangeView.as_view(template_name='registration/password_change.html'),
     name='password_change' ),
@@ -61,5 +66,6 @@ urlpatterns = [
     path('reset/<uidb64>/<token>',
     auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'),
     name='password_reset_confirm'),
+    # END RESTORE PASSWORD----------------------------------------------------------
 ] 
 # + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

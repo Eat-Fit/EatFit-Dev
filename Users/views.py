@@ -10,9 +10,13 @@ from django.contrib import messages
 # Models
 from Users.models import Profile
 
+# Forms
+from Users.forms import ProfileForm
+
 # Exception
 from django.db.utils import IntegrityError
 
+from django.http import JsonResponse
 
 # Create your views here.
 def landing_view(request):
@@ -63,6 +67,47 @@ def register_view(request):
         return redirect('login')
 
     return render(request, 'users/register.html')
+
+
+@login_required
+def profile_user_view(request):
+    """Profile user view"""
+    profile = request.user.profile
+    user = request.user
+
+    if request.method == 'POST':
+
+        # user.email = request.POST['email']
+        # user.username = request.POST['username']
+
+        # user.save()
+        # return redirect('profile')
+# ---------------------------------------------------------------
+        form = ProfileForm(request.POST,request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            # profile.picture = data['picture']
+            user.username = data['username']
+            user.email = data['email']
+
+            user.save()
+            profile.save()
+            # messages.success(request, 'Tu perfil ha sido actualizado :)')
+            # return redirect('home')
+    else:
+        form = ProfileForm()
+# ---------------------------------------------------------------------
+
+    return render(
+        request=request,
+        template_name='users/profile.html',
+        context={
+            'profile':profile, 
+            'user':request.user,
+            'form':form
+            }
+        )
 
 
 @login_required
