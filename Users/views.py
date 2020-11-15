@@ -87,7 +87,7 @@ def profile_user_view(request):
         if form.is_valid():
             data = form.cleaned_data
 
-            # profile.picture = data['picture']
+            profile.picture = data['picture']
             user.username = data['username']
             user.email = data['email']
 

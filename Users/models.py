@@ -3,6 +3,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# Cloudinary imports
+from cloudinary.models import CloudinaryField
+
 # Create your models here.
 
 class Profile(models.Model):
@@ -10,11 +13,13 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    picture = models.ImageField(
-        upload_to= 'users/pictures',
-        blank=True, 
-        null=True
-    )
+    # picture = models.ImageField(
+    #     upload_to= 'users/pictures',
+    #     blank=True, 
+    #     null=True
+    # )
+
+    picture = CloudinaryField('image', blank = True, null = True)
 
     is_nutriologist = models.BooleanField(default=False)
 

@@ -1,6 +1,8 @@
 """User profile form"""
 
 from django import forms
+from cloudinary.forms import CloudinaryFileField
+from .models import Profile
 
 
 class ProfileForm(forms.Form):
@@ -13,4 +15,10 @@ class ProfileForm(forms.Form):
         })
         
     email   = forms.EmailField(required=False)
-    picture = forms.ImageField(required=False)
+
+    # picture = forms.ImageField(required=False)
+    picture = CloudinaryFileField(
+        required=False,
+        options = {
+            'gravity':"face", 'height':324, 'width':324, 'crop':"fill"
+        })

@@ -30,6 +30,13 @@
     line-height: 32px;
 }
 
+.btnEditar {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px !important;
+    line-height: 32px;
+}
+
 .direccion {
     font-style: normal;
     font-weight: 300;

@@ -16,14 +16,21 @@
 
     <div class="row h-100 justify-content-around">
         <div class="col-6 col-sm-5 col-md-3 col-lg-3 fondoPerfil my-2 ml-3 text-center">
-            <img src=" {% static 'icons/default_user.png' %} " class="img-fluid my-3 px-3 tamFoto" alt="Responsive image">
+            
+            {% if profile.picture %}
+            <img src=" {{profile.picture.url}} " class="img-fluid my-3 px-3 tamFoto rounded-circle" alt="Responsive image default">
+            {% else %}            
+            <img src=" {% static 'icons/default_user.png' %} " class="img-fluid my-3 px-3 tamFoto" alt="No se pudo cargar la foto de perfil">
+            {% endif %}            
+            
+            
 
-            <p class="mt-4 nombre">{{user.get_full_name}}</p>
+            <p class="mt-2 nombre">{{user.get_full_name}}</p>
             <p class="usuario">@{{ request.user.username}}</p>
             
             <span class="correo">Correo: </span><span class="direccion text-break">{{user.email}}</span><br>
 
-            <button type="button" class="btn btn-outline-warning my-4" data-toggle="modal" data-target="#staticBackdrop">Editar perfil</button>
+            <button type="button" class="btn btn-outline-warning btn-lg my-4 btnEditar" data-toggle="modal" data-target="#staticBackdrop">Editar perfil</button>
         
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -39,10 +46,6 @@
                     
                     <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-
-                    {% comment %} {% if form.errors %}
-                        <p>{{ form.errors }}</p>
-                    {% endif %}  {% endcomment %}
 
                     <div class="media">
                         {% if profile.picture %}
@@ -98,7 +101,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
+                    <button type="submit" class="btn btn-success btn-block mt-4">Actualizar información</button>
                 </form>
 
                 </div>
@@ -110,69 +113,11 @@
             </div>
             </div>
         
+
         </div>
 
         <div class="col-10 col-sm-10 col-md-8 col-lg-8 bg-success">
         <p>aqui va el resto</p>
-         {% comment %} <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-
-                    {% if form.errors %}
-                        <p>{{ form.errors }}</p>
-                    {% endif %} 
-
-                    <div class="media">
-                        {% if profile.picture %}
-                            <img src="{{ profile.picture.url }}" class="rounded-circle" height="80" />
-                        {% else%}
-                            <img src="{% static 'icons\default_user.png' %}" class="rounded-circle" height="80" />
-                        {% endif %}
-
-                        <div class="media-body">
-                            <h5 class="ml-4 text-light">@{{ user.username }} | {{ user.get_full_name }}</h5>
-                            <p class="ml-4 text-light"><input type="file" name="picture"></p>
-                        </div>
-                    </div>
-                    {% for error in form.picture.errors %}
-                        <div class="alert alert-danger">
-                            <b>picture:</b> {{error}}
-                        </div>
-                    {% endfor %}
-                    <br><br>
-
-                    <div class="form-group">
-                        <label>usuario</label>
-                        <input
-                            class="form-control {% if form.username.errors %}is-invalid{% endif %}"
-                            type="text"
-                            name="username"
-                            placeholder="Website"
-                            value=" {% if form.username.errors %} {{form.username.value}} {% else %} {{ profile.username }} {% endif %}"
-                        />
-                        <div class="invalid-feedback">
-                            {% for error in form.username.errors %}
-                                {{error}}
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="mb-0 text-light">Correo</label>
-                        <input
-                            class="form-control {% if form.email.errors %}is-invalid{% endif %}"
-                            type="email"
-                            name="email"
-                            value="{{user.email}}"
-                        >
-                        <div class="invalid-feedback">
-                            {% for error in form.website.errors %}
-                                {{error}}
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
-                </form> {% endcomment %}
 
         </div>
     </div>
