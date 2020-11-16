@@ -31,7 +31,11 @@
             <span class="correo">Correo: </span><span class="direccion text-break">{{user.email}}</span><br>
 
             <button type="button" class="btn btn-outline-warning btn-lg my-4 btnEditar" data-toggle="modal" data-target="#staticBackdrop">Editar perfil</button>
-        
+
+            <div class="d-flex flex-column btn-block mt-0 mb-3">
+                <a class="m-auto" href="{% url 'password_change' %}">Cambia tu contraseña aquí</a>
+            </div>
+
             <!-- Modal -->
             <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
