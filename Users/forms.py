@@ -14,7 +14,7 @@ class ProfileForm(forms.Form):
             'required':'El campo de usuario no puede estar vacio!'
         })
         
-    email   = forms.EmailField(required=False)
+    email   = forms.EmailField(required=True)
 
     # picture = forms.ImageField(required=False)
     picture = CloudinaryFileField(

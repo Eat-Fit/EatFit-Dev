@@ -7,48 +7,43 @@
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/loginStyle.css' %}"/>
     
 </head>
 <body>
-    <div class="fondo">
-      <div class="row justify-content-center">
-        <div class="col-sm-6">
+<div class="fondo">
+  <div class="col-12 col-sm-10 col-md-7 col-lg-6">
+    <div class="col-12 px-5">
+      <form method="POST" action=" {% url 'login' %} ">
+      {% csrf_token %}
+        <div class="form-group center">
+          <div class="container my-5 py-3 fondoLog">
 
-          <form method="POST" action=" {% url 'login' %} ">
-           {% csrf_token %}
-            <div class="form-group center">
-                <div class="container my-5 py-3 fondoLog">
+            {% if error %}
+              <p class="alert alert-danger mt-0 mb-2" role="alert">{{error}}</p>
+            {% endif %}
 
-                  {% if error %}
-                    <p class="alert alert-danger mt-0 mb-2" role="alert">{{error}}</p>
-                  {% endif %}
-
-                  <label for="InputUser" class="mt-2 mb-0">Usuario</label>
-                  <input type="text" class="form-control" id="InputUser" name="username">
-                  
-                  <label for="exampleInputPassword1" class="mt-2 mb-0">Contraseña</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                  
-                  <div  class="col text-center">
-                    <button type="submit" class="btn btn-dark mt-4 mb-1">Iniciar Sesión</button>
-                  </div>
-                  <div class="d-flex flex-column mt-2">
-                    <p class="m-auto font-weight-light">Olvidaste tu password?
-                    <a href="{% url 'password_reset' %}">click aqui</a> </p>
-                 </div>
-                 <div class="d-flex flex-column ">
-                    <p class="m-auto font-weight-light"><a href="{% url 'register' %}">Crear una cuenta</a></p>
-                 </div>
-               </div>
+            <label for="InputUser" class="mt-2 mb-0">Usuario</label>
+            <input type="text" class="form-control" id="InputUser" name="username">
+            
+            <label for="exampleInputPassword1" class="mt-2 mb-0">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            
+            <div  class="col text-center">
+              <button type="submit" class="btn btn-dark mt-4 mb-1">Iniciar Sesión</button>
             </div>
-           </form>
-
+            <div class="d-flex flex-column mt-2">
+              <p class="m-auto font-weight-light">Olvidaste tu password?
+              <a href="{% url 'password_reset' %}">click aqui</a> </p>
+            </div>
+            <div class="d-flex flex-column ">
+              <p class="m-auto font-weight-light"><a href="{% url 'register' %}">Crear una cuenta</a></p>
+            </div>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
-    <div class="fondo2">
-
-    </div>
+  </div>
+</div>
 </body>
 </html>
