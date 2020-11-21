@@ -1,3 +1,7 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 .colorGreen {
     background: rgba(102, 163, 21, 0.85);
 }
@@ -10,12 +14,21 @@
     font-weight: bold;
 }
 
-.thinText{
+.btn {
     font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.thinText{
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 550;
+}
+
+.helpText {
+    font-weight: 300;
 }
 
 .btn{

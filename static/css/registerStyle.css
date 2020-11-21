@@ -1,24 +1,15 @@
-.body{
-    margin: 0;
-    padding: 0;
-}
-
-.fondo{ 
-    background-image: url("/static/img/login_background.png");
+.fondo{
+    background-image: url(../img/Fondo\ register.png);
     height: 100%;
     width: 100%;
-    background-size:cover !important;
+    background-size:cover;
     background-repeat: no-repeat;
 }
 
-.fondoLog{
+.fondoReg {
     background: #F7F7F7 !important;
     box-shadow: -4px 8px 25px rgba(0, 0, 0, 0.60);
     border-radius: 10px !important;
-}
-
-.btn{
-    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
 }
 
 .center {
@@ -28,7 +19,7 @@
     min-height: 100vh;
 }
 
-.hText {
+p {
     font-weight: 500;
     font-size: 24px;
 }
