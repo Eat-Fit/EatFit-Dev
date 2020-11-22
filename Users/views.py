@@ -92,9 +92,11 @@ def profile_user_view(request):
             user.email = data['email']
 
             user.save()
-            profile.save()
+
+            if profile.picture:
+                profile.save()
             # messages.success(request, 'Tu perfil ha sido actualizado :)')
-            # return redirect('home')
+            return redirect('home')
     else:
         form = ProfileForm()
 # ---------------------------------------------------------------------

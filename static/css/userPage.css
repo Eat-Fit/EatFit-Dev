@@ -4,42 +4,27 @@
     height: 90%;
 }
 
+.fondoCita {
+    background: #F8F2F2;
+    border-radius: 5px;
+}
+
+.fondoDocs {
+    background: rgba(196, 196, 196, 0.4);
+    border-radius: 5px;
+}
+
 .tamFoto {
     min-width: 100px;
     max-height: 220px !important;
 }
 
 .nombre {
-    font-style: normal;
     font-weight: bold;
-    font-size: 28px;
     text-transform: capitalize;
 }
 
 .usuario {
-    font-style: normal;
     font-weight: 300;
-    font-size: 23px;
-    line-height: 32px;
-}
-
-.correo {
-    font-style: normal;
-    font-weight: 700;
     font-size: 20px;
-    line-height: 32px;
-}
-
-.btnEditar {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px !important;
-    line-height: 32px;
-}
-
-.direccion {
-    font-style: normal;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 32px;
 }

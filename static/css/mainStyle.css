@@ -6,6 +6,10 @@ body {
     background: rgba(102, 163, 21, 0.8);
 }
 
+.colorRed {
+    background:  	#A30D3D !important;
+}
+
 /* Text options */
 .title {
     display: flex;
