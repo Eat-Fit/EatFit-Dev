@@ -1,12 +1,13 @@
 /* Fondo del recuadro de la lista de nutriologos */
 .fondoNutri {
-    background: #F7F7F7;
+    background: #F3F3F3;
     mix-blend-mode: normal;
+    border-radius: 10px;
 }
 
 /* Fondo de recuadro del nutriologo */
 .cuadroNutri {
-    background: #E6E6E6;
+    background: #E5E5E5;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 }
@@ -18,8 +19,8 @@
 }
 
 /* Margen para la info de los nutriologos para que no haga todo el salto de linea */
-.mr0 {
-    margin: 0px;
+.mBottom {
+    margin: 3px;
 }
 
 .detalleNutri {
@@ -28,12 +29,95 @@
 }
 
 .profilePic{
-    min-width: 90px;
+    height: 120px;
+    width: 120px;
 }
 
 .linea {
     border-top: 1px solid rgba(34, 40, 49, 0.2);
-    height: 2px;
+    height: 3px;
     padding: 0;
-    margin: 20px auto 0 auto;
+    margin: 15px auto 0 auto;
   }
+
+
+/* Profile Card css --------------------------------------- */
+
+.maincard {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.thecard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.9s ease
+}
+
+.thecard:hover {
+    transform: rotateY(180deg)
+}
+
+.thefront {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: hidden;
+    background: #bc3a60;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid #eee;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    padding: 10px
+}
+
+.theback {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: hidden;
+    background: #e3688f;
+    color: #fff;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+    border: 1px solid #eee;
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    padding: 10px
+}
+
+.btn {
+    padding-left: 20px;
+    padding-right: 20px
+}
+
+.user_name {
+    color: #eee;
+    font-size: 10px;
+    margin-top: 0px
+}
+
+.about {
+    font-size: 12px
+}
+
+.follow-button,
+.follow-button:active,
+.follow-button:visited,
+.follow-button:focus {
+    background-color: #a40d3c !important;
+    color: #fff !important;
+    mix-blend-mode: normal;
+    border-radius: 5px;
+    box-shadow: none
+}
+
+.follow-button:hover {
+    background-color:  	#79042a !important;
+}
+
+/* End profile Card css --------------------------------- */
