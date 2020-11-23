@@ -76,13 +76,6 @@ def profile_user_view(request):
     user = request.user
 
     if request.method == 'POST':
-
-        # user.email = request.POST['email']
-        # user.username = request.POST['username']
-
-        # user.save()
-        # return redirect('profile')
-# ---------------------------------------------------------------
         form = ProfileForm(request.POST,request.FILES)
         if form.is_valid():
             data = form.cleaned_data
@@ -99,7 +92,6 @@ def profile_user_view(request):
             return redirect('home')
     else:
         form = ProfileForm()
-# ---------------------------------------------------------------------
 
     return render(
         request=request,
@@ -110,6 +102,25 @@ def profile_user_view(request):
             'form':form
             }
         )
+
+@login_required
+def profile_nutri_edit_view(request):
+    """Profile Nutriologist View"""
+    return render(request,'users/profile_nutri_edit_view.html')
+
+def edit_nutri_profile(request):
+    """Profile Nutriologist edit form"""
+    return render(request, 'users/profile_nutri_edit_form_view.html')
+
+@login_required
+def profile_nutri_view(request, username=None):
+    """Profile Nutriologist View"""
+    current_user = request.user
+    user = User.objects.get(username=username)
+    # post = user.post.all() como ejemplo para conseguir todos los post de user
+
+    return render(request, 'users/profile_nutri_view.html', {'user':user} )
+
 
 
 @login_required

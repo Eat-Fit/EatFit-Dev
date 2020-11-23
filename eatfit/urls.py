@@ -24,6 +24,9 @@ urlpatterns = [
     path('logout/',    users_views.logout_view, name='logout'),
     path('register/',  users_views.register_view , name='register'),
     path('mi-perfil/', users_views.profile_user_view, name='profile'),
+    path('mi-perfil/nutri/', users_views.profile_nutri_edit_view, name='profileNutriEdit'),
+    path('mi-perfil/nutri/editar/', users_views.edit_nutri_profile, name='updateProfileNutri'),
+    path('perfil-nutri/<str:username>/', users_views.profile_nutri_view, name='profileNutri'),
     # END USER VIEWS-----------------------------------------------
 
 

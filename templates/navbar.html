@@ -11,7 +11,13 @@
     <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link ml-0  navText" style="font-size:17px"href=" {% url 'profile' %} ">Perfil</a>
+
+        {% if request.user.profile.is_nutriologist%}
+          <a class="nav-link ml-0  navText" style="font-size:17px"href=" {% url 'profileNutriEdit' %} ">Perfil</a>
+        {% else %}
+          <a class="nav-link ml-0  navText" style="font-size:17px"href=" {% url 'profile' %} ">Perfil</a>
+        {% endif %}
+
       </li>
       {% comment %} <li class="nav-item active">
         <a class="nav-link ml-1" href="#">Perfil 2</a>
