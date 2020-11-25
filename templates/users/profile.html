@@ -125,29 +125,54 @@
 
         </div>
 
-        <div class="col-11 col-sm-11 col-md-7 col-lg-7 my-4 fondoPerfil">
+        <div class="col-11 col-sm-11 col-md-7 col-lg-8 my-4 fondoPerfil">
             <div class="row justify-content-center">
+
+                {% for cita in citas %}
                 <div class="col-11 fondoCita my-3 px-3">
                     <div class="row">
                         <div class="col-9">
-                            <span class="nText">Nutriologo: </span><span class="">Carlos Fernandez Leon</span><br>
-                            <span class="nText">Fecha: </span><span class="">10/11/2020</span><br>
-                            <span class="nText">Motivo de cita: </span><span class="">Revision general</span><br>
-                            <span class="nText">Documentos asignados: </span><br>
-
-                            <div class="row row-cols-2 fondoDocs mx-1 my-1 mb-2">
-                                <div class="col text-wrap"><p>Recetas</p></div>
-                                <div class="col text-wrap"><p>Ejercicios</p></div>
-                                <div class="col text-wrap"><p>Control de peso en semana 1</p></div>
+                            <div class="row row-cols-2">
+                                <div class="col text-wrap mt-1"> <span class="nText">Nutriologo: </span><span class="">{{cita.nutriologo.usuario.user.get_full_name}}</span><br> </div>
+                                <div class="col text-wrap mt-1"> <span class="nText">Fecha: </span><span class="">{{cita.fecha_de_cita}}  |  {{cita.hora_de_cita}}</span><br> </div>
+                                <div class="col text-wrap mt-1 mb-4 mb-sm-3 mb-md-4 mb-lg-1 linea"> <span class="nText">Motivo de cita: </span><span class="">{{cita.motivo_de_cita}}</span><br> </div>
+                                <div class="col text-wrap mt-1 mb-4 mb-sm-3 mb-md-4 mb-lg-1 linea"> <span class="nText">Estatus: </span>
+                                    {% if cita.estado %}
+                                    <span class="">Cita confirmada</span><br>
+                                    {% else %}
+                                    <span class="">Cita pendiente</span><br>
+                                    {% endif %}
+                                </div>
+                                    
+                            </div>
+                            
+                            <div class="col"><p class="nText text-center mt-4 pt-1 mb-0">Documentos asignados: </p></div>
+                            <div class="div fondoDocs mx-1 my-1 mb-2">
+                                <div class="col text-wrap">
+                                    {% if cita.dctos_asignados %}
+                                    <p>{{cita.dctos_asignados}}</p>
+                                    {% else %}
+                                    <p>No hay documentos asignados a esta cita</p>
+                                    {% endif %}
+                                    
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-3" style="border-left: 1px solid rgba(34, 40, 49, 0.2)">
-                            <p>No de cita: 1</p>
-                            <div class="row justify-content-center mb-2"><img src=" {% static 'icons/default_nutri.png' %} " class="align-self-center img-fluid" alt=""></div>
+                            <p class="text-center"><b>No de cita:</b> 1</p>
+                            <div class="row justify-content-center mb-2">
+                                {% if cita.nutriologo.usuario.picture %}
+                                <img src=" {{cita.nutriologo.usuario.picture.url}} " class="align-self-center rounded-circle px-4 " height="100" alt="Foto de perfil">
+                                {% else %}            
+                                <img src=" {% static 'icons/default_nutri.png' %} " class="align-self-center img-fluid" alt="Default nutriologist picture">
+                                {% endif %} 
+                            </div>
                         </div>
                     </div>                
                 </div>
+                {% endfor %}
+
             </div>
         </div>
     </div>

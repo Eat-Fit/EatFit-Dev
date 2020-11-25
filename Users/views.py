@@ -9,6 +9,7 @@ from django.contrib import messages
 
 # Models
 from Users.models import Profile
+from services.models import Receta
 
 # Forms
 from Users.forms import ProfileForm
@@ -93,13 +94,15 @@ def profile_user_view(request):
     else:
         form = ProfileForm()
 
+    citas = Receta.objects.all().filter(cliente=profile)
     return render(
         request=request,
         template_name='users/profile.html',
         context={
             'profile':profile, 
             'user':request.user,
-            'form':form
+            'form':form,
+            'citas':citas,
             }
         )
 
