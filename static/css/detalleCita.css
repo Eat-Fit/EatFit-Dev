@@ -1,0 +1,71 @@
+
+/* Detalle cita */
+body {
+    background: #DEDEE6
+}
+
+.container {
+    border: none;
+    border-radius: 0
+}
+
+.second {
+    background-color: #F9F9F9;
+}
+
+
+.xyz {
+    background-color: #fff;
+    border: none;
+    border-radius: 0;
+    margin: 30px 90px 0 0;
+    height: 40px
+}
+
+.fa-search {
+    margin: 15px 12px;
+    color: #5B5D69;
+    font-size: 12px
+}
+
+.card {
+    margin: 25px 90px 30px 0;
+    border: none;
+    border-radius: 0;
+    padding: 60px 0 60px 0
+}
+
+h6 {
+    color: #424242
+}
+
+h6:hover {
+    cursor: pointer
+}
+
+.col-md-2 img {
+    align-self: center;
+    width: 12px;
+    height: 12px;
+    padding-bottom: 2px
+}
+
+.col-md-2 {
+    text-align: center;
+    border: none;
+    border-radius: 20px
+}
+
+@media screen and (max-width: 992px) {
+    .second {
+        padding-left: 35px
+    }
+
+    .xyz {
+        margin-right: 45px
+    }
+
+    .card {
+        margin-right: 45px
+    }
+}

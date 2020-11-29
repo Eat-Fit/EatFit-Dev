@@ -13,6 +13,7 @@ from services.models import Receta
 
 # Forms
 from Users.forms import ProfileForm, NutriologistForm
+from services.forms import UpdateRecetaForm
 
 # Exception
 from django.db.utils import IntegrityError
@@ -161,7 +162,25 @@ def detalle_cita_view(request, id):
     """Ver detalle de cita"""
     current_user = request.user
     receta = Receta.objects.get(id=id)
-    return render(request, 'users/detalle_cita.html', {'cita':receta})
+
+    if request.method =='POST':
+        form = UpdateRecetaForm(request.POST)
+        if form.is_valid():
+            data=form.cleaned_data
+
+            receta.fecha_de_cita = data['fecha_de_cita']
+            receta.hora_de_cita = data['hora_de_cita']
+            receta.motivo_de_cita = data['motivo_de_cita']
+            receta.dctos_asignados = data['dctos_asignados']
+            receta.estado = data['estado']
+            receta.activa = data['activa']
+
+            receta.save()
+            return redirect('home')
+    else:
+        form = UpdateRecetaForm()
+
+    return render(request, 'users/detalle_cita.html', {'cita':receta, 'form':form})
 
 
 @login_required

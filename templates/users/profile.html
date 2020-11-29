@@ -155,7 +155,7 @@
                             <div class="div fondoDocs mx-1 my-1 mb-2">
                                 <div class="col text-wrap">
                                     {% if cita.dctos_asignados %}
-                                    <p>{{cita.dctos_asignados}}</p>
+                                    <p>{{cita.dctos_asignados|linebreaks }}</p>
                                     {% else %}
                                     <p>No hay documentos asignados a esta cita</p>
                                     {% endif %}

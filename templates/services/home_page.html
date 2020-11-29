@@ -24,7 +24,7 @@
                                 <div class="thecard">
 
                                     {% if nutri.usuario.picture %}
-                                    <div class="thefront text-center py-4"> <img src=" {{nutri.usuario.picture.url}} " class="rounded-circle" width="100" alt="Foto de perfil">
+                                    <div class="thefront text-center py-4"> <img src=" {{nutri.usuario.picture.url}} " class="rounded-circle" width="100" height="100" alt="Foto de perfil">
                                     {% else %}            
                                     <div class="thefront text-center py-4"> <img src=" {% static 'icons/default_nutri.png' %} " class="rounded-circle" width="100">
                                     {% endif %} 
