@@ -27,6 +27,7 @@ urlpatterns = [
     path('mi-perfil/nutri/', users_views.profile_nutri_edit_view, name='profileNutriEdit'),
     path('mi-perfil/nutri/editar/', users_views.edit_nutri_profile, name='updateProfileNutri'),
     path('mi-perfil/nutri/citas/', users_views.citas_detalle_nutri_view, name='citasNutri'),
+    path('mi-perfil/detalle-cita/<str:id>', users_views.detalle_cita_view, name='detalleCita'),
     path('perfil-nutri/<str:username>/', users_views.profile_nutri_view, name='profileNutri'),
     # END USER VIEWS-----------------------------------------------
 
@@ -34,11 +35,8 @@ urlpatterns = [
 
     # Services views
     path('home/', services_views.home_view, name='home'),
-
-    path('prueba/', users_views.prueba, name='prueba'),
     
-
-
+    
     # RESTORE PASSWORD VIEWS--------------------------------------------------------
     path('password_change/',
     auth_views.PasswordChangeView.as_view(template_name='registration/password_change.html'),

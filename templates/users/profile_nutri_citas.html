@@ -36,7 +36,7 @@
                         {% else %}            
                         <img src=" {% static 'icons/default_user.png' %} " class="align-self-center rounded-circle" height="80" alt="Default profile picture">
                         {% endif %} 
-                        <button class="btn btn-dark my-2 mt-2 btn-sm" data-toggle="modal" data-target="#staticBackdrop">Ver detalles</button>
+                        <a href="{% url 'detalleCita' cita.id %}"><button class="btn btn-dark my-2 mt-2 btn-sm">Ver detalles</button></a>
                         </div>
                     </div>
 

@@ -157,6 +157,14 @@ def edit_nutri_profile(request):
                         })
 
 @login_required
+def detalle_cita_view(request, id):
+    """Ver detalle de cita"""
+    current_user = request.user
+    receta = Receta.objects.get(id=id)
+    return render(request, 'users/detalle_cita.html', {'cita':receta})
+
+
+@login_required
 def citas_detalle_nutri_view(request):
     """Todas las citas del nutriologo"""
     citas_pendientes = Receta.objects.all().filter(nutriologo=request.user.profile.nutriologist, activa=True)
@@ -193,8 +201,3 @@ def logout_view(request):
     """Logout a user"""
     logout(request)
     return redirect('login')
-
-
-def prueba(request):
-    """Test view"""
-    return HttpResponse('<h1>Logeado correctamente</h1>')
