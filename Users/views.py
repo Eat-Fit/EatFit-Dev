@@ -12,12 +12,14 @@ from Users.models import Profile
 from services.models import Receta
 
 # Forms
-from Users.forms import ProfileForm
+from Users.forms import ProfileForm, NutriologistForm
 
 # Exception
 from django.db.utils import IntegrityError
 
 from django.http import JsonResponse
+
+from datetime import date
 
 # Create your views here.
 def landing_view(request):
@@ -82,6 +84,7 @@ def profile_user_view(request):
             data = form.cleaned_data
 
             profile.picture = data['picture']
+        
             user.username = data['username']
             user.email = data['email']
 
@@ -109,18 +112,77 @@ def profile_user_view(request):
 @login_required
 def profile_nutri_edit_view(request):
     """Profile Nutriologist View"""
-    return render(request,'users/profile_nutri_edit_view.html')
+    hoy = date.today()
+    profile = request.user.profile
+    citas_de_hoy = Receta.objects.all().filter(fecha_de_cita__day=hoy.day,estado=True)
+    return render(request,'users/profile_nutri_edit_view.html', context={'profile':profile,'citas_hoy':citas_de_hoy})
 
-def edit_nutri_profile(request):
-    """Profile Nutriologist edit form"""
-    return render(request, 'users/profile_nutri_edit_form_view.html')
 
 @login_required
-def profile_nutri_view(request, username=None):
+def edit_nutri_profile(request):
+    """Profile Nutriologist edit form"""
+    profile = request.user.profile
+    nutriologist = request.user.profile.nutriologist
+    user = request.user
+
+    if request.method == 'POST':
+        form = NutriologistForm(request.POST,request.FILES)
+        if form.is_valid():
+            data = form.cleaned_data
+
+            profile.picture = data['picture']
+            
+            user.username = data['username']
+            user.email = data['email']
+            nutriologist.attention_days = data['attention_days']
+            nutriologist.attention_hours = data['attention_hours']
+            nutriologist.age = data['age']
+            nutriologist.work_approach = data['work_approach']
+            nutriologist.cedula_prof_det = data['cedula_prof_det']
+            nutriologist.biography = data['biography']
+
+            user.save()
+            if profile.picture:
+                profile.save()
+            nutriologist.save()
+
+            return redirect('profileNutriEdit')
+    else:
+        form = NutriologistForm()
+
+    return render(  request=request, 
+                    template_name='users/profile_nutri_edit_form_view.html', 
+                    context={
+                        'form':form
+                        })
+
+@login_required
+def citas_detalle_nutri_view(request):
+    """Todas las citas del nutriologo"""
+    citas_pendientes = Receta.objects.all().filter(nutriologo=request.user.profile.nutriologist, activa=True)
+    citas_terminadas = Receta.objects.all().filter(nutriologo=request.user.profile.nutriologist, activa=False)
+    return render (
+        request, 
+        'users/profile_nutri_citas.html',
+        context={
+            'citas_terminadas':citas_terminadas,
+            'citas_pendientes':citas_pendientes,
+        })
+
+
+@login_required
+def profile_nutri_view(request, username):
     """Profile Nutriologist View"""
     current_user = request.user
     user = User.objects.get(username=username)
     # post = user.post.all() como ejemplo para conseguir todos los post de user
+    if request.method == 'POST':
+        date = request.POST['date_selected']
+        hour = request.POST['hour_selected']
+
+        cita = Receta.objects.create(nutriologo=user.profile.nutriologist,cliente=current_user.profile, fecha_de_cita=date, hora_de_cita=hour)
+        
+        return redirect('home')
 
     return render(request, 'users/profile_nutri_view.html', {'user':user} )
 

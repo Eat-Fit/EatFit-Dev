@@ -9,13 +9,13 @@
 
 <div class="container mb-5">
         <div class="row justify-content-md-center">
-            <div class="col-6 p-4" id="profile-box">
+            <div class="col-6 p-4 fondoPerfil my-5" id="profile-box">
                <form action="{% url 'updateProfileNutri' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <div class="media">
-                        {% if profile.picture %}
-                            <img src="{{ profile.picture.url }}" class="rounded-circle" height="75" />
+                        {% if user.profile.picture %}
+                            <img src="{{ user.profile.picture.url }}" class="rounded-circle" height="75" />
                         {% else%}
                             <img src="{% static 'icons\default_nutri.png' %}" class="rounded-circle" height="75" />
                         {% endif %}
@@ -30,7 +30,7 @@
                             <b>Foto:</b> {{error}}
                         </div>
                     {% endfor %}
-                    <br><br>
+                    <br>
 
                     <div class="form-group">
                         <label class="mb-0">@Usuario</label>
@@ -40,10 +40,9 @@
                             name="username"
                             required
                             minlength="4"
-                            maxlength="15"
+                            {% comment %} maxlength="15" {% endcomment %}
                             value="{{user.username}}"
                         >
-                        
                         <div class="invalid-feedback" id="validationServer1Feedback">
                             {% for error in form.username.errors %}
                                 {{error}}
@@ -61,7 +60,102 @@
                             value="{{user.email}}"
                         >
                         <div class="invalid-feedback">
-                            {% for error in form.website.errors %}
+                            {% for error in form.email.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label class="mb-0">Edad</label>
+                            <input 
+                                class="form-control {% if form.age.errors %}is-invalid{% endif %}" 
+                                type="text" 
+                                name="age" 
+                                value="{{user.profile.nutriologist.age}}"
+                                required/>
+                            <div class="invalid-feedback">
+                            {% for error in form.age.errors %}
+                                {{error}}
+                            {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="mb-0">Enfoque</label>
+                            <input 
+                                class="form-control  {% if form.work_approach.errors %}is-invalid{% endif %}" 
+                                type="text" 
+                                name="work_approach" 
+                                value="{{user.profile.nutriologist.work_approach}}"
+                                required
+                            >
+                            <div class="invalid-feedback">
+                            {% for error in form.work_approach.errors %}
+                                {{error}}
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row mb-3">
+                        <div class="col">
+                            <label class="mb-0">Días</label>
+                            <input 
+                                class="form-control {% if form.attention_days.errors %}is-invalid{% endif %}" 
+                                type="text" 
+                                name="attention_days" 
+                                value="{{user.profile.nutriologist.attention_days}}"
+                                required/>
+                            <div class="invalid-feedback">
+                            {% for error in form.attention_days.errors %}
+                                {{error}}
+                            {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="mb-0">Horario</label>
+                            <input 
+                                class="form-control  {% if form.attention_hours.errors %}is-invalid{% endif %}" 
+                                type="text" 
+                                name="attention_hours" 
+                                value="{{user.profile.nutriologist.attention_hours}}"
+                                required
+                            >
+                            <div class="invalid-feedback">
+                            {% for error in form.attention_hours.errors %}
+                                {{error}}
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="mb-0">Cedula profesional</label>
+                        <input
+                            class="form-control {% if form.cedula_prof_det.errors %}is-invalid{% endif %}"
+                            type="text"
+                            name="cedula_prof_det"
+                            required
+                            value="{{user.profile.nutriologist.cedula_prof_det}}"
+                        >
+                        <div class="invalid-feedback">
+                            {% for error in form.cedula_prof_det.errors %}
+                                {{error}}
+                            {% endfor %}
+                        </div>
+                    </div>                    
+
+                    <div class="form-group">
+                        <label class="mb-0">Biografía</label>
+                        <textarea 
+                            class="form-control vLargeTextField {% if form.biography.errors %}is-invalid{% endif %}" 
+                            name="biography"
+                            rows="5">{{user.profile.nutriologist.biography}}</textarea>
+                        <div class="invalid-feedback">
+                            {% for error in form.biography.errors %}
                                 {{error}}
                             {% endfor %}
                         </div>
@@ -70,7 +164,10 @@
                     <button type="submit" class="btn colorRed btn-block mt-4">Actualizar información</button>
                 </form>
             </div>
+            
         </div>
 </div>
+
+
 
 {% endblock container %}

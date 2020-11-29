@@ -41,7 +41,7 @@ class Nutriologist (models.Model):
 
     work_approach   = models.CharField (max_length=60, blank=False) #Enfoque del nutriologo como ej. especialista en obecidad etc etc etc.
 
-    cedula_prof_det = models.CharField (max_length=50, blank=True, null=True)
+    cedula_prof_det = models.CharField (max_length=60, blank=True, null=True)
 
     cedula_prof_img = CloudinaryField('image', blank = True, null = True)
 

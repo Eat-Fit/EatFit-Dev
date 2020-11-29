@@ -27,7 +27,7 @@
             {% if profile.picture %}
             <img src=" {{profile.picture.url}} " class="img-fluid my-3 px-3 tamFoto rounded-circle" alt="Foto de perfil">
             {% else %}            
-            <img src=" {% static 'icons/default_user.png' %} " class="img-fluid my-3 px-3 tamFoto" alt="Foto de perfil">
+            <img src=" {% static 'icons/default_nutri.png' %} " class="img-fluid my-3 px-3 tamFoto" alt="Foto de perfil">
             {% endif %}            
             <p class="thinText"><u>Nutriologo</u></p>
             <h3 class="mt-3 title nombre">{{user.get_full_name}}</h3>
@@ -43,32 +43,64 @@
 
         </div>
 
-        {% comment %} <div class="col-11 col-sm-11 col-md-7 col-lg-7 my-4 fondoPerfil">
+        <div class="col-11 col-sm-11 col-md-7 col-lg-8"> 
             <div class="row justify-content-center">
-                <div class="col-11 fondoCita my-3 px-3">
-                    <div class="row">
-                        <div class="col-9">
-                            <span class="nText">Nutriologo: </span><span class="">Carlos Fernandez Leon</span><br>
-                            <span class="nText">Fecha: </span><span class="">10/11/2020</span><br>
-                            <span class="nText">Motivo de cita: </span><span class="">Revision general</span><br>
-                            <span class="nText">Documentos asignados: </span><br>
 
-                            <div class="row row-cols-2 fondoDocs mx-1 my-1 mb-2">
-                                <div class="col text-wrap"><p>Recetas</p></div>
-                                <div class="col text-wrap"><p>Ejercicios</p></div>
-                                <div class="col text-wrap"><p>Control de peso en semana 1</p></div>
-                            </div>
-                        </div>
-
-                        <div class="col-3" style="border-left: 1px solid rgba(34, 40, 49, 0.2)">
-                            <p>No de cita: 1</p>
-                            <div class="row justify-content-center mb-2"><img src=" {% static 'icons/default_nutri.png' %} " class="align-self-center img-fluid" alt=""></div>
-                        </div>
-                    </div>                
+                <div class="col-12 align-items-center bgTitle mt-4">
+                    <p class="nText text-center my-1">Biografia</p>
                 </div>
+                <div class="col-12 bgInfo mb-1">
+                    <p class="text-justify">{{user.profile.nutriologist.biography|linebreaks }}</p>
+                </div>
+
+                <div class="col-12 align-items-center bgTitle mt-3">
+                    <p class="nText text-center my-1">Información</p>
+                </div>
+                <div class="col-12 bgInfo py-2">
+                    <span class="nText my-2">Edad:    </span> <span>{{user.profile.nutriologist.age}}</span><br>
+                    <span class="nText my-2">Trabajo: </span> <span>{{user.profile.nutriologist.work_approach}}</span><br>
+                    <span class="nText my-2">Cedula profesional: </span> <span>{{user.profile.nutriologist.cedula_prof_det}}</span><br>
+                </div>
+
+                <div class="col-12 align-items-center bgTitle mt-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>           </div>
+                        <div class="align-self-center"><p class="nText text-center my-2 mr-auto">Citas de hoy | {% now "d/m/Y" %}</p></div>
+                        <div class="text-center"><a href="{% url 'citasNutri' %}"><button class="btn btn-secondary btn-sm">Todas las citas</button></a></div>
+                    </div>
+                </div>
+                {% if citas_hoy %}
+                    {% for cita in citas_hoy %}
+                        <div class="col-12 bgInfo mt-2 mb-2 px-3">
+                            <div class="row my-1">
+
+                                <div class="col-9 col-lg-10">
+                                    <div class="col text-wrap mt-1 mb-2"> <span class="nText">Nombre: </span><span class="">{{cita.cliente.user.get_full_name}}</span><br> </div>
+                                    <div class="col text-wrap mt-1 mb-2"> <span class="nText">Fecha: </span><span class="">{{cita.fecha_de_cita}}  |  {{cita.hora_de_cita}}</span><br> </div>
+                                    <div class="col text-wrap mt-1 mb-2"> <span class="nText">Motivo de cita: </span><span class="">{{cita.motivo_de_cita}}</span><br> </div>
+                                </div>
+
+                                <div class="col-3 col-lg-2 my-1 align-self-center" style="border-left: 1px solid rgba(34, 40, 49, 0.2)">
+                                    <div class="row justify-content-center mb-2">
+                                        {% if cita.nutriologo.usuario.picture %}
+                                        <img src=" {{cita.cliente.picture.url}} " class="align-self-center rounded-circle px-4 " height="90" alt="Foto de perfil">
+                                        {% else %}            
+                                        <img src=" {% static 'icons/default_profile.png' %} " class="align-self-center img-fluid" alt="Default profile picture">
+                                        {% endif %} 
+                                    </div>
+                                </div>
+                            </div>                
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12 bgInfo py-2">
+                    <p class="text-center nText my-3 px-2">No tienes citas confirmadas para el día de hoy! Puedes revisar tu historial a ver si tienes citas pendientes</p>
+                    </div>
+                {% endif %}
+                
             </div>
         </div>
-         {% endcomment %}
+        
     </div>
         
     </div>
