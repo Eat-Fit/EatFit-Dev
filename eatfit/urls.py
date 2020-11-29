@@ -6,8 +6,8 @@ from django.urls import path
 
 
 # # Static files
-# from django.conf import settings
-# from django.conf.urls.static import static
+from django.conf import settings
+from django.conf.urls.static import static
 
 # Views
 from Users import views as users_views
@@ -69,5 +69,4 @@ urlpatterns = [
     auth_views.PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'),
     name='password_reset_confirm'),
     # END RESTORE PASSWORD----------------------------------------------------------
-] 
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
