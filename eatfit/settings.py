@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'secretKeyForProject'
+SECRET_KEY = 'db@vfa%++abju04bql#)5w%sh8c=x$2s^4a-!#@yk*i)2t79=t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -63,6 +63,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -97,12 +98,26 @@ WSGI_APPLICATION = 'eatfit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    import dj_database_url
+    from decouple import config
+
+    DATABASES = {
+        'default': {
+            dj_database_url.config(
+                default=config('DATABASE_URL')
+            )
+        }
+    }
+
 
 
 # Password validation
@@ -151,6 +166,8 @@ STATICFILES_DIRS = (
 # Login url para el login_required
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'login/'
+
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
