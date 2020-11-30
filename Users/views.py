@@ -94,7 +94,7 @@ def profile_user_view(request):
             if profile.picture:
                 profile.save()
             # messages.success(request, 'Tu perfil ha sido actualizado :)')
-            return redirect('home')
+            return redirect('detalleCita')
     else:
         form = ProfileForm()
 

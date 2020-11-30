@@ -136,7 +136,7 @@
                 {% for cita in citas %}
                 <div class="col-12 bgInfo mt-3 mb-2 px-3">
                     <div class="row my-1">
-                        <div class="col-9">
+                        <div class="col-9 col-lg-10">
                             <div class="row row-cols-2">
                                 <div class="col text-wrap mt-1"> <span class="nText">Nutriologo: </span><span class="">{{cita.nutriologo.usuario.user.get_full_name}}</span><br> </div>
                                 <div class="col text-wrap mt-1"> <span class="nText">Fecha: </span><span class="">{{cita.fecha_de_cita}}  |  {{cita.hora_de_cita}}</span><br> </div>
@@ -164,15 +164,17 @@
                             </div>
                         </div>
 
-                        <div class="col-3 my-1" style="border-left: 1px solid rgba(34, 40, 49, 0.2)">
-                            <p class="text-center"><b>No de cita:</b>{{cita.id}}</p>
-                            <div class="row justify-content-center mb-2">
+                        <div class="col-3 col-lg-2 my-1" style="border-left: 1px solid rgba(34, 40, 49, 0.2)">
+
+                            <div class="row justify-content-center mt-2 h-100">
                                 {% if cita.nutriologo.usuario.picture %}
-                                <img src=" {{cita.nutriologo.usuario.picture.url}} " class="align-self-center rounded-circle px-4 " height="100" alt="Foto de perfil">
+                                <img src=" {{cita.nutriologo.usuario.picture.url}} " class="align-self-center rounded-circle px-4 " height="90" alt="Foto de perfil">
                                 {% else %}            
-                                <img src=" {% static 'icons/default_nutri.png' %} " class="align-self-center img-fluid" alt="Default nutriologist picture">
+                                <img src=" {% static 'icons/default_nutri.png' %} " class="align-self-center rounded-circle" height="90" alt="Default profile picture">
                                 {% endif %} 
+                                <a href="{% url 'detalleCita' cita.id %}"><button class="btn btn-dark my-2 mt-2 btn-sm">Ver detalles</button></a>
                             </div>
+
                         </div>
                     </div>                
                 </div>
